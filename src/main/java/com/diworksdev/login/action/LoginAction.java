@@ -3,8 +3,7 @@ import java.sql.SQLException;
 
 import com.diworksdev.login.dao.LoginDAO;
 import com.diworksdev.login.dto.LoginDTO;
-import
-com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport{
 	private String name;
@@ -15,6 +14,8 @@ public class LoginAction extends ActionSupport{
 	
 		LoginDAO dao = new LoginDAO();
 		LoginDTO dto = new LoginDTO();
+		
+		dto = dao.select(name, password);
 		
 		if(name.equals(dto.getName())) {
 			if(password.equals(dto.getPassword())){
